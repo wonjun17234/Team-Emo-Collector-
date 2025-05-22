@@ -28,3 +28,21 @@ export function drawStarMousePointer() {
   dropShadowEnd();
   pop();
 }
+
+export function fadeIn() {
+  const fadeInDuration = 1000; // 1초
+  const fadeInStep = 255 / (fadeInDuration / 16); // 16ms마다 증가
+  let currentAlpha = 0;
+
+  function draw() {
+    if (currentAlpha < 255) {
+      currentAlpha += fadeInStep;
+      fill(255, currentAlpha);
+      rect(0, 0, width, height);
+    } else {
+      noLoop(); // 애니메이션이 끝나면 루프 중지
+    }
+  }
+
+  return draw;
+}
