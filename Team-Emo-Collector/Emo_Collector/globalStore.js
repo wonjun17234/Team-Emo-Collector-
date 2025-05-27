@@ -21,5 +21,7 @@ export const global = {
     surprised: 0, neutral: 0, fearful: 0
   },
 
+  grdImg: null,
+
   emotions: ["happy", "sad", "angry", "surprised", "neutral", "fearful"]
 };

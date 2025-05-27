@@ -25,6 +25,7 @@ function preload() {
     global.emoGrayImg[e] = loadImage(path('emoFragmentsGray', e));
   });
   global.lightImg = loadImage("assets/light.png");
+  global.grdImg = loadImage("assets/grd.png");
   fullscreen(true);
 }
 

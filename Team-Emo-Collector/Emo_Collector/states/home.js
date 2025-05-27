@@ -5,7 +5,9 @@ import { dropShadowStart, dropShadowEnd, setFontStyle, drawStarMousePointer } fr
 export function Home() {
   //document.body.style.cursor = 'none';
 
-  background("#1f1c2c");
+  //background("#1f1c2c");
+  imageMode(CORNER);
+  image(global.grdImg, 0, 0, width, height);
   drawStars();
 
   textAlign(LEFT, CENTER);
@@ -18,7 +20,8 @@ export function Home() {
 
   drawEmotionLabels();
 
-  fill(255, 255, 255, 200);
+  let breathTerm = 180
+  fill(255, 255, 255, abs((frameCount%(breathTerm*2)-breathTerm)/breathTerm*2*255));
   noStroke();
   setFontStyle(500, 32);
   text("터치하여 시작하세요", width - 300, height - 50);
