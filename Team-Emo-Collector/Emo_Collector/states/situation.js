@@ -1,5 +1,5 @@
 // ✅ states/situation.js – 표정 인식 연동 Scene
-import { State, setState } from '../stateManager.js';
+import { State, currentState, setState } from '../stateManager.js';
 import { global } from '../globalStore.js';
 import { drawStarMousePointer, setFontStyle } from './utils.js';
 import { dropShadowStart, dropShadowEnd } from './utils.js';
@@ -34,6 +34,15 @@ export function pressedSituation() {
   console.log("pressed in situation scene");
   // 예: 다음 상태로 전환
   setState(State.Home);
+  isInitialized = false; // 상태 초기화
+  if (capture) {
+    capture.stop();     // 스트리밍 중지
+    capture.remove();   // DOM에서 제거
+    capture = null;
+  }
+
+  faceapi = null;  // 참조 해제
+  detections = [];
 }
 
 function setupFaceApi() {
@@ -53,12 +62,15 @@ function setupFaceApi() {
 }
 
 function gotFaces(error, result) {
-  if (error) {
-    console.error(error);
-    return;
-  }
+  if (error) return;
   detections = result;
-  faceapi.detect(gotFaces); // loop
+
+  // 200ms 마다 1회 분석 (초당 5프레임 분석)
+  setTimeout(() => {
+    if (currentState.value === State.Situation && faceapi) {
+      faceapi.detect(gotFaces);
+    }
+  }, 200);
 }
 
 function drawDetections() {
