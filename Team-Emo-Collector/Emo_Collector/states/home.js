@@ -21,10 +21,16 @@ export function Home() {
   drawEmotionLabels();
 
   let breathTerm = 180
-  fill(255, 255, 255, abs((frameCount%(breathTerm*2)-breathTerm)/breathTerm*2*255));
+  
   noStroke();
   setFontStyle(500, 32);
-  text("터치하여 시작하세요", width - 300, height - 50);
+  fill(255);
+  textAlign(RIGHT, CENTER);
+  setFontStyle(500, 16);
+  text("아직 중간 시연 단계라 마우스 클릭으로 각 장면을 강제로 넘기실 수 있습니다.", width - 30, 50);
+  setFontStyle(500, 32);
+  fill(255, 255, 255, abs((frameCount%(breathTerm*2)-breathTerm)/breathTerm*2*255));
+  text("터치하여 시작하세요", width - 30, height - 50);
 
   drawStarMousePointer();
 }

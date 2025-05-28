@@ -7,6 +7,7 @@ import { ScanFace, pressedScanFace } from './states/scanFace.js';
 import { Situation, pressedSituation } from './states/situation.js';
 import { CollectEmotion, pressedCollectEmotion } from './states/collectEmotion.js';
 import { Report, pressedReport } from './states/report.js';
+import { Credits, pressedCredits } from './states/credits.js';
 
 let bgCanvas;
 
@@ -16,6 +17,7 @@ const mousePressedHandler = {
   [State.Situation]: () => pressedSituation(),
   [State.CollectEmotion]: () => pressedCollectEmotion(),
   [State.Report]: () => pressedReport(),
+  [State.Credits]: () => pressedCredits()
 };
 
 function preload() {
@@ -60,6 +62,7 @@ function draw() {
     case State.Situation: Situation(); break;
     case State.CollectEmotion: CollectEmotion(); break;
     case State.Report: Report(); break;
+    case State.Credits: Credits(); break;
   }
 
   // draw() 안에서
