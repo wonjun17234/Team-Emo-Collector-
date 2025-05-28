@@ -35,9 +35,13 @@ export function CollectEmotion() {
 }
 
 export function pressedCollectEmotion() {
-  moveToReport();
+  if(millis() - startMillis > 10) {
+    moveToReport();
+  }
 }
 
 function moveToReport() {
+  startMillis = millis(); // 시작 시간 초기화
+  isInitialized = false; // 초기화 상태로 되돌리기
   setState(State.Report);
 }
