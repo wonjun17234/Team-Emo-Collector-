@@ -37,6 +37,9 @@ export function Situation() {
   setFontStyle(500, 24);
   text("이때, 느껴지는 당신의 감정을 표정으로 나타내주세요.", global.centerX-80, height - 90);
 
+  imageMode(CENTER);
+  image(global.situations[0].img, global.centerX-80, global.centerY - 20, 600, 400);
+
   setFontStyle(700, 32);
   text("행복 (인식률: 80%)", global.centerX-80, height - 50);
 

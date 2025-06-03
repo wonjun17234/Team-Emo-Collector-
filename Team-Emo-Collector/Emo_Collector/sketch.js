@@ -26,6 +26,10 @@ function preload() {
     global.emoImg[e] = loadImage(path('emoFragments', e));
     global.emoGrayImg[e] = loadImage(path('emoFragmentsGray', e));
   });
+  
+  for (let i = 0; i < global.situations.length; i++) {
+    global.situations[i].img = loadImage(`assets/situations/${global.situations[i].id}.png`);
+  }
   global.lightImg = loadImage("assets/light.png");
   global.grdImg = loadImage("assets/grd.png");
   fullscreen(true);
